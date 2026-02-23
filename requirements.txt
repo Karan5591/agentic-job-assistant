@@ -1,0 +1,30 @@
+# Core Agent & LLM
+langchain
+langchain-community
+langchain-openai
+langgraph
+langchain-text-splitters
+langchain-huggingface
+langchain-chroma
+
+# RAG & Vector Store
+chromadb
+sentence-transformers
+
+# Document Ingestion
+pypdf
+python-docx
+unstructured
+
+# Utilities
+python-dotenv
+requests
+tqdm
+
+# API Layer
+fastapi
+uvicorn
+
+# Logging & DX
+loguru
+rich
