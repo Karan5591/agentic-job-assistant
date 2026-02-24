@@ -1,10 +1,13 @@
 from typing import TypedDict, Optional
 
-class JobAgentState(TypedDict):
-    resume_text: str
-    job_description: str
+class JobState(TypedDict):
+    # Inputs
+    resume_query: str
+    job_query: str
 
+    # Intermediate
     resume_analysis: Optional[dict]
-    match_result: Optional[dict]
+    job_description: Optional[str]
 
-    final_decision: Optional[str]
+    # Output
+    match_result: Optional[dict]

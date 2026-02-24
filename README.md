@@ -1,50 +1,74 @@
-
 Agentic Job Assistant
 
-An end-to-end Agentic AI system that analyzes resumes and job descriptions using RAG, LangChain,
-and structured LLM outputs. This project is built as a job-ready capstone following real-world
-AI backend architecture patterns.
+An end-to-end Agentic AI system that analyzes resumes, matches them against job descriptions, and provides structured, explainable recommendations using LangGraph, RAG, and LLM agents.
 
-Key Features:
-- Resume ingestion using RAG (PDF, DOCX)
-- Resume analysis using LLMs
-- Structured, validated outputs using Pydantic
-- Vector-based semantic search (ChromaDB)
-- Modular agent-based architecture
-- Designed for future LangGraph orchestration
+CURRENT PROJECT STATUS (CHECKPOINT)
 
-Architecture Overview:
-Documents -> Ingestion -> Vector Store -> Retrieval (RAG) -> Resume Analysis Agent
--> Structured Pydantic Output -> Matching Agents (planned)
+COMPLETED:
+- Resume ingestion using RAG (PDF/DOCX)
+- Vector store powered semantic retrieval
+- Resume Analyzer Agent (structured JSON output)
+- Job Matcher Agent (score, skill gap, recommendation)
+- LangGraph-based agent orchestration
+- End-to-end pipeline tested via CLI
+- Robust Pydantic schemas
 
-Project Structure:
+IN PROGRESS:
+- FastAPI backend
+- Gradio-based UI
+- Deployment & scaling
+
+ARCHITECTURE OVERVIEW
+
+User Input (Resume + JD)
+        |
+        v
+   Orchestrator
+        |
+        v
+     LangGraph
+    /         \
+Resume Agent  Job Matcher
+        |
+        v
+   Final JSON Output
+
+TECH STACK
+
+
+- Python
+- LangChain
+- LangGraph
+- Retrieval-Augmented Generation (RAG)
+- ChromaDB
+- Pydantic
+- FastAPI (upcoming)
+- Gradio (upcoming)
+
+PROJECT STRUCTURE
+
 app/
-  agents/
-  prompts/
-  rag/
-  schemas/
-  tools/
-  graph/
-data/
-  resumes_data/
-  job_descriptions_data/
-  vectorstore/
+ ├── agents/          # Resume analyzer & job matcher agents
+ ├── graph/           # LangGraph nodes & state
+ ├── orchestrator/    # Entry point orchestration logic
+ ├── rag/             # Document ingestion & retrieval
+ ├── schemas/         # Pydantic schemas
+ ├── prompts/         # Prompt templates
+ └── tests/           # CLI test scripts
 
-Implemented Phases:
-- Phase 1: Document ingestion & vector search (RAG)
-- Phase 2.1: Resume analysis agent
-- Phase 2.2: Structured LLM output with Pydantic
-- Phase 2.3: Resume ↔ Job Description matching agent
-- Phase 2.4: LangGraph orchestration
-- Phase 2.5: FastAPI backend (planned)
+HOW TO RUN (CURRENT)
 
-Tech Stack:
-Python, LangChain, ChromaDB, OpenAI, Pydantic, FastAPI, LangGraph
+uv sync
+python app/orchestrator/test_orchestrator.py
 
-Why This Project:
-Focused on production-ready LLM pipelines, schema-enforced outputs,
-and modular agentic design reflecting industry-grade AI engineering practices.
+NEXT MILESTONES
 
-Author:
+- FastAPI API layer
+- Gradio UI
+- API + UI integration
+- Deployment-ready version
+
+AUTHOR
+
 Karan Singh
-AI / LLM Engineer
+Applied LLM Engineer (Agentic AI, RAG, LangGraph)
