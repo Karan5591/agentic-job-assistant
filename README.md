@@ -34,8 +34,8 @@ Implemented Phases:
 - Phase 1: Document ingestion & vector search (RAG)
 - Phase 2.1: Resume analysis agent
 - Phase 2.2: Structured LLM output with Pydantic
-- Phase 2.3: Resume ↔ Job Description matching agent (planned)
-- Phase 2.4: LangGraph orchestration (planned)
+- Phase 2.3: Resume ↔ Job Description matching agent
+- Phase 2.4: LangGraph orchestration
 - Phase 2.5: FastAPI backend (planned)
 
 Tech Stack:

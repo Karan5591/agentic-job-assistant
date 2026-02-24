@@ -6,6 +6,7 @@ match_prompt = ChatPromptTemplate.from_template(
     """
     - You are an expert AI recruitment assistant.
     - Compare the resume and job description below and evaluate candidate fit.
+    -Only list missing_skills if they are explicitly mentioned or strongly provided in the job description.
 Resume (structured):
 {resume_data}
 Job Description:
