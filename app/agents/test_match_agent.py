@@ -6,15 +6,15 @@ if __name__ == "__main__":
 
     #Get resume
     resume_text = """
-    Python developer with 5 years of experience.
-    Strong in SQL, PostgreSQL, and data analysis.
+    - Python developer with 5 years of experience.
+    - Basic knowledge in SQL, and data analysis.
     """
 
     resume_structured = analyze_resume(resume_text)
 
     #Get Job Description via RAG
     jd_docs = query_knowledge_base(
-        query="Python SQL Data Analyst",
+        query="Python, SQL and excel Data Analyst",
         doc_type="job_descriptions",
         k=3
     )
@@ -31,4 +31,3 @@ if __name__ == "__main__":
         job_description=job_description
     )
     print(match_result)
-    print(match_result.model_dump())

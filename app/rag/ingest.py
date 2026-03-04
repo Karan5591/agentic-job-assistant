@@ -7,15 +7,16 @@ from langchain_community.document_loaders import (
     UnstructuredFileLoader,
 )
 
+# Initially I am working with PDF and docx, so mentioned them
 Supported_Extensions = {
     ".pdf": PyPDFLoader,
     ".docx": Docx2txtLoader,
 }
 
 def load_document(file_path: Path):
-    ext = file_path.suffix.lower()
-    loader_class = Supported_Extensions.get(ext, UnstructuredFileLoader)
-    loader = loader_class(str(file_path))
+    ext = file_path.suffix.lower() #extract and normalize a file's extension
+    doc_loader = Supported_Extensions.get(ext, UnstructuredFileLoader)   # if no extension found then use UnstructuredFileLoader
+    loader = doc_loader(str(file_path))
     docs = loader.load()    
     return docs
 
@@ -36,7 +37,6 @@ def ingest_directory(directory: Path):
 
             if not docs:
                 continue
-
             chunks = splitter.split_documents(docs)
 
             # Attach metadata AFTER chunking
@@ -46,15 +46,14 @@ def ingest_directory(directory: Path):
             all_chunks.extend(chunks)
 
         except Exception as e:
-            print(f"⚠️ Skipping {file.name}: {e}")
+            print(f"Skipping {file.name}: {e}")
 
     if not all_chunks:
-        print(f"⚠️ No chunks created for {directory}")
+        print(f"No chunks created for {directory}")
         return
 
     vectorstore.add_documents(all_chunks)
-    #vectorstore.persist()
-
+    
     print(f"Ingested {len(all_chunks)} chunks from {directory}")
    
 

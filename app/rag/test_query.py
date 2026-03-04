@@ -1,7 +1,7 @@
 from app.rag.query import query_knowledge_base
 
 if __name__ == "__main__":
-    query = "Python and SQL experience required"
+    query = "C++ and JAVA experience required"
     results = query_knowledge_base(
         query=query,
         doc_type="job_descriptions",
